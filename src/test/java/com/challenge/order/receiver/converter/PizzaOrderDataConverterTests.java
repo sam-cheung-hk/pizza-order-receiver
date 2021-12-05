@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -105,6 +106,7 @@ public class PizzaOrderDataConverterTests {
         pizzaOrder.setId("784690331588403300");
         pizzaOrder.setOrderReferenceNumber("784690331588403205");
         pizzaOrder.setOrderTime(orderTime);
+        pizzaOrder.setTotalPrice(BigDecimal.valueOf(100L));
 
         CreateOrderResponse response = pizzaOrderDataConverter.transformToCreateOrderResponse(pizzaOrder);
 
@@ -113,6 +115,7 @@ public class PizzaOrderDataConverterTests {
         Assert.assertEquals(response.getOrderTransNo(), "784690331588403300");
         Assert.assertEquals(response.getOrderReferenceNo(), "784690331588403205");
         Assert.assertEquals(response.getOrderTime(), orderTime);
+        Assert.assertEquals(response.getTotalPrice(), BigDecimal.valueOf(100L).setScale(2, RoundingMode.HALF_EVEN));
     }
 
 }

@@ -47,6 +47,7 @@ public class PizzaOrderDataConverter {
         response.setOrderReferenceNo(pizzaOrder.getOrderReferenceNumber());
         response.setOrderTime(pizzaOrder.getOrderTime());
         response.setOrderTransNo(pizzaOrder.getId());
+        response.setTotalPrice(pizzaOrder.getTotalPrice());
 
         return response;
     }

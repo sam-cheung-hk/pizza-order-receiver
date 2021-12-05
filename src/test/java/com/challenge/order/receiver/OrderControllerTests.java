@@ -56,7 +56,9 @@ public class OrderControllerTests {
         Assert.assertNotNull(responseBody.get("orderReferenceNo"));
         Assert.assertNotNull(responseBody.get("orderTime"));
         Assert.assertNotNull(responseBody.get("orderTransNo"));
+        Assert.assertNotNull(responseBody.get("totalPrice"));
         Assert.assertEquals(responseBody.get("orderReferenceNo").asText(), "784690331588403300");
+        Assert.assertEquals(responseBody.get("totalPrice").asInt(), 100);
         Assert.assertEquals(ZonedDateTime.parse(responseBody.get("orderTime").asText()).toEpochSecond(), ZonedDateTime.parse("2021-12-05T16:00:00+08:00").toEpochSecond());
     }
 
